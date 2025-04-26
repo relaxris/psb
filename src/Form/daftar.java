@@ -104,7 +104,7 @@ private DefaultTableModel tabmode;
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        tgl = new com.toedter.calendar.JDateChooser();
+        tgl = new org.netbeans.modules.form.InvalidComponent();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -255,11 +255,14 @@ private DefaultTableModel tabmode;
                 bcariActionPerformed(evt);
             }
         });
+<<<<<<< HEAD
         bcari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 bcariKeyPressed(evt);
             }
         });
+=======
+>>>>>>> farhan
 
         tabledaftar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -585,6 +588,7 @@ private DefaultTableModel tabmode;
     }//GEN-LAST:event_bbatalActionPerformed
 
     private void bcariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bcariActionPerformed
+<<<<<<< HEAD
         datatable();
     }//GEN-LAST:event_bcariActionPerformed
 
@@ -643,6 +647,11 @@ private DefaultTableModel tabmode;
         }
     }//GEN-LAST:event_tglPropertyChange
     
+=======
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bcariActionPerformed
+
+>>>>>>> farhan
     /**
      * @param args the command line arguments
      */
@@ -714,7 +723,7 @@ private DefaultTableModel tabmode;
     private javax.swing.JRadioButton rlaki;
     private javax.swing.JRadioButton rperempuan;
     private javax.swing.JTable tabledaftar;
-    private com.toedter.calendar.JDateChooser tgl;
+    private org.netbeans.modules.form.InvalidComponent tgl;
     private javax.swing.JTextArea txtalamat;
     private javax.swing.JTextField txtasal;
     private javax.swing.JTextField txtcari;
