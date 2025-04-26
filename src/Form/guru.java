@@ -7,6 +7,11 @@ package Form;
 
 import Koneksi.koneksi;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -24,6 +29,7 @@ public class guru extends javax.swing.JFrame {
         initComponents();
     aktif();
     kosong();
+    dataTable();
     }
     
        protected void aktif(){
@@ -36,7 +42,28 @@ public class guru extends javax.swing.JFrame {
         cariTxt.setText("");
     }
     
-
+    protected void datatable(){
+        Object[] Baris={"Id", "Nama Guru", "Jenis Kelamin", "Mata Pelajaran"};
+        tabmode = new DefaultTableModel (null, Baris);
+        String cariitem=cariTxt.getText();
+        
+        try {
+            String sql = "SELECT * FROM guru where nama like '%"+cariitem+"%' or nisn like '%"+cariitem+"%' order by nama asc";
+            Statement  stat = conn.createStatement();
+            ResultSet hasil = stat.executeQuery(sql);
+            while (hasil.next()){
+                tabmode.addRow(new Object[]{
+                    hasil.getString(1),
+                    hasil.getString(2),
+                    hasil.getString(3),
+                    hasil.getString(4)
+                });
+            }
+            daftarGuruTbl.setModel(tabmode);
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(null, "data gagal dipanggil"+e);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -54,7 +81,7 @@ public class guru extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         namaGuruTxt = new javax.swing.JTextField();
         jenisKelaminCmboBox = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        mataPelCmboBox = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         daftarGuruTbl = new javax.swing.JTable();
         ubahBtn = new javax.swing.JButton();
@@ -148,7 +175,7 @@ public class guru extends javax.swing.JFrame {
                             .addComponent(namaGuruTxt, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(idGuruTxt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(8, 8, 8))
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(mataPelCmboBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(72, 72, 72)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(tambahBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -200,7 +227,7 @@ public class guru extends javax.swing.JFrame {
                                 .addGap(36, 36, 36)
                                 .addComponent(hapusBtn)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(mataPelCmboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cariBtn)
@@ -218,15 +245,77 @@ public class guru extends javax.swing.JFrame {
     }//GEN-LAST:event_jenisKelaminCmboBoxActionPerformed
 
     private void ubahBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ubahBtnActionPerformed
-        // TODO add your handling code here:
+        String jenis = null;
+        Object jenisPilihan = jenisKelaminCmboBox.getSelectedItem();
+        if(jenisPilihan.equals("L")){
+            jenis = "Laki-Laki";
+        }else{
+            jenis = "Perempuan";
+        }
+        
+        String sql = "update daftar set tgl=?, nama=?, jenis=?, asal_sekolah=?, nisn=?, nik=?, nomor_kk=?, ttl=?, alamat=?, n_ayah=?, k_ayah=?, n_ibu=?, k_ibu=?, n_wali=?, k_wali?";
+        try{
+            PreparedStatement stat = conn.prepareStatement(sql);
+            stat.setString(1, idGuruTxt.getText());
+            stat.setString(2, namaGuruTxt.getText());
+            stat.setString(3, jenis);
+            stat.setString(4, (String) mataPelCmboBox.getSelectedItem());
+            
+            stat.executeUpdate();
+            JOptionPane.showMessageDialog(null, "data berhasil disimpan");
+            kosong();
+            idGuruTxt.requestFocus();
+        }
+        catch (SQLException e){
+            JOptionPane.showMessageDialog(null, "data gagal disimpan"+e);
+        }
+        datatable();        
     }//GEN-LAST:event_ubahBtnActionPerformed
 
     private void tambahBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambahBtnActionPerformed
-        // TODO add your handling code here:
+         String jenis = null;
+         
+         Object jenisPilihan = jenisKelaminCmboBox.getSelectedItem();
+        if(jenisPilihan.equals("L")){
+            jenis = "Laki-Laki";
+        }else{
+            jenis = "Perempuan";
+        }
+        
+        String sql = "insert into guru values (?,?,?,?)";
+        try{
+            PreparedStatement stat = conn.prepareStatement(sql);
+            stat.setString(1, idGuruTxt.getText());
+            stat.setString(2, namaGuruTxt.getText());
+            stat.setString(3, jenis);
+            stat.setString(4, (String) mataPelCmboBox.getSelectedItem());
+            stat.executeUpdate();
+            JOptionPane.showMessageDialog(null, "data berhasil disimpan");
+            kosong();
+            idGuruTxt.requestFocus();
+        }
+        catch (SQLException e){
+            JOptionPane.showMessageDialog(null, "data gagal disimpan"+e);
+        }
+        datatable();
     }//GEN-LAST:event_tambahBtnActionPerformed
 
     private void hapusBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapusBtnActionPerformed
-        // TODO add your handling code here:
+                int ok = JOptionPane.showConfirmDialog(null,"hapus","konfirmasi dialog",JOptionPane.YES_NO_OPTION);
+                if (ok==0){
+                    String sql = "delete from daftar where nama = '"+idGuruTxt.getText()+"'";
+                    try{
+                        PreparedStatement stat = conn.prepareStatement(sql);
+                        stat.executeUpdate();
+                        JOptionPane.showMessageDialog(null, "data berhasil dihapus");
+                        kosong();
+                        idGuruTxt.requestFocus();
+                    }
+                    catch (SQLException e){
+                        JOptionPane.showMessageDialog(null, "data gagal diubah"+e);
+                    }
+                    datatable();
+                 }       
     }//GEN-LAST:event_hapusBtnActionPerformed
 
     private void cariBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cariBtnActionPerformed
@@ -274,7 +363,6 @@ public class guru extends javax.swing.JFrame {
     private javax.swing.JTable daftarGuruTbl;
     private javax.swing.JButton hapusBtn;
     private javax.swing.JTextField idGuruTxt;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -282,6 +370,7 @@ public class guru extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<String> jenisKelaminCmboBox;
+    private javax.swing.JComboBox<String> mataPelCmboBox;
     private javax.swing.JTextField namaGuruTxt;
     private javax.swing.JButton tambahBtn;
     private javax.swing.JButton ubahBtn;
