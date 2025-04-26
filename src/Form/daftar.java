@@ -524,7 +524,7 @@ private DefaultTableModel tabmode;
     }//GEN-LAST:event_bkeluarActionPerformed
 
     private void bubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bubahActionPerformed
-String jenis = null;
+    String jenis = null;
         if(rlaki.isSelected()){
             jenis = "Laki-Laki";
         }
@@ -532,32 +532,31 @@ String jenis = null;
             jenis = "Perempuan";
         }
         
-        String sql = "update daftar set tgl=?, nama=?, jenis=?, asal_sekolah=?, nisn=?, nik=?, nomor_kk=?, ttl=?, alamat=?, n_ayah=?, k_ayah=?, n_ibu=?, k_ibu=?, n_wali=?, k_wali?";
+        String sql = "update daftar set nama=?, jenis=?, asal_sekolah=?, nisn=?, nik=?, nomor_kk=?, ttl=?, alamat=?, n_ayah=?, k_ayah=?, n_ibu=?, k_ibu=?, n_wali=?, k_wali=? where nama='"+txtnm.getText()+"'";
         try{
-            PreparedStatement stat = conn.prepareStatement(sql);
-            stat.setString(1, tgldaftar);   
-            stat.setString(2, txtnm.getText());
-            stat.setString(3, jenis);
-            stat.setString(4, txtasal.getText());
-            stat.setString(5, txtnisn.getText());
-            stat.setString(6, txtnik.getText());
-            stat.setString(7, txtkk.getText());
-            stat.setString(8, txtttl.getText());
-            stat.setString(9, txtalamat.getText());
-            stat.setString(10, txtnayah.getText());
-            stat.setString(11, txtkayah.getText());
-            stat.setString(12, txtnibu.getText());
-            stat.setString(13, txtkibu.getText());
-            stat.setString(14, txtnwali.getText());
-            stat.setString(15, txtkwali.getText());
+            PreparedStatement stat = conn.prepareStatement(sql);  
+            stat.setString(1, txtnm.getText());
+            stat.setString(2, jenis);
+            stat.setString(3, txtasal.getText());
+            stat.setString(4, txtnisn.getText());
+            stat.setString(5, txtnik.getText());
+            stat.setString(6, txtkk.getText());
+            stat.setString(7, txtttl.getText());
+            stat.setString(8, txtalamat.getText());
+            stat.setString(9, txtnayah.getText());
+            stat.setString(10, txtkayah.getText());
+            stat.setString(11, txtnibu.getText());
+            stat.setString(12, txtkibu.getText());
+            stat.setString(13, txtnwali.getText());
+            stat.setString(14, txtkwali.getText());
             
             stat.executeUpdate();
-            JOptionPane.showMessageDialog(null, "data berhasil disimpan");
+            JOptionPane.showMessageDialog(null, "data berhasil diubah");
             kosong();
             txtnm.requestFocus();
         }
         catch (SQLException e){
-            JOptionPane.showMessageDialog(null, "data gagal disimpan"+e);
+            JOptionPane.showMessageDialog(null, "data gagal diubah"+e);
         }
         datatable();
     }//GEN-LAST:event_bubahActionPerformed
@@ -601,7 +600,6 @@ String jenis = null;
 
     private void tabledaftarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabledaftarMouseClicked
         int bar = tabledaftar.getSelectedRow();
-        String a = tabmode.getValueAt(bar, 0).toString();
         String b = tabmode.getValueAt(bar, 1).toString();
         String c = tabmode.getValueAt(bar, 2).toString();
         String d = tabmode.getValueAt(bar, 3).toString();
