@@ -13,6 +13,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 /**
  *
@@ -504,7 +506,10 @@ String jenis = null;
         String sql = "update daftar set tgl=?, nama=?, jenis=?, asal_sekolah=?, nisn=?, nik=?, nomor_kk=?, ttl=?, alamat=?, n_ayah=?, k_ayah=?, n_ibu=?, k_ibu=?, n_wali=?, k_wali?";
         try{
             PreparedStatement stat = conn.prepareStatement(sql);
-            stat.setString(1, tgl.getDateFormatString());
+            LocalDate tanggal = LocalDate.now();
+            DateTimeFormatter formatterTanggal = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            String tanggalFormatted = tanggal.format(formatterTanggal);
+            stat.setString(1, tgl.getDateFormatString());   
             stat.setString(2, txtnm.getText());
             stat.setString(3, jenis);
             stat.setString(4, txtasal.getText());
