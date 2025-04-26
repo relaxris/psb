@@ -106,7 +106,7 @@ private DefaultTableModel tabmode;
 
         jLabel4.setText("Jenis Mata Pelajaran");
 
-        cbjenis.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Umum", "Agama", "Item 3", "Item 4" }));
+        cbjenis.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Umum", "Agama" }));
 
         bsimpan.setText("Simpan");
         bsimpan.addActionListener(new java.awt.event.ActionListener() {
