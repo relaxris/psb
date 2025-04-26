@@ -206,10 +206,25 @@ private DefaultTableModel tabmode;
         });
 
         bubah.setText("Ubah");
+        bubah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bubahActionPerformed(evt);
+            }
+        });
 
         bhapus.setText("Hapus");
+        bhapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bhapusActionPerformed(evt);
+            }
+        });
 
         bbatal.setText("Batal");
+        bbatal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bbatalActionPerformed(evt);
+            }
+        });
 
         bkeluar.setText("Keluar");
         bkeluar.addActionListener(new java.awt.event.ActionListener() {
@@ -476,6 +491,68 @@ private DefaultTableModel tabmode;
     private void bkeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bkeluarActionPerformed
     dispose();        
     }//GEN-LAST:event_bkeluarActionPerformed
+
+    private void bubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bubahActionPerformed
+String jenis = null;
+        if(rlaki.isSelected()){
+            jenis = "Laki-Laki";
+        }
+        else if(rperempuan.isSelected()){
+            jenis = "Perempuan";
+        }
+        
+        String sql = "update daftar set tgl=?, nama=?, jenis=?, asal_sekolah=?, nisn=?, nik=?, nomor_kk=?, ttl=?, alamat=?, n_ayah=?, k_ayah=?, n_ibu=?, k_ibu=?, n_wali=?, k_wali?";
+        try{
+            PreparedStatement stat = conn.prepareStatement(sql);
+            stat.setString(1, tgl.getDateFormatString());
+            stat.setString(2, txtnm.getText());
+            stat.setString(3, jenis);
+            stat.setString(4, txtasal.getText());
+            stat.setString(5, txtnisn.getText());
+            stat.setString(6, txtnik.getText());
+            stat.setString(7, txtkk.getText());
+            stat.setString(8, txtttl.getText());
+            stat.setString(9, txtalamat.getText());
+            stat.setString(10, txtnayah.getText());
+            stat.setString(11, txtkayah.getText());
+            stat.setString(12, txtnibu.getText());
+            stat.setString(13, txtkibu.getText());
+            stat.setString(14, txtnwali.getText());
+            stat.setString(15, txtkwali.getText());
+            
+            stat.executeUpdate();
+            JOptionPane.showMessageDialog(null, "data berhasil disimpan");
+            kosong();
+            txtnm.requestFocus();
+        }
+        catch (SQLException e){
+            JOptionPane.showMessageDialog(null, "data gagal disimpan"+e);
+        }
+        datatable();
+    }//GEN-LAST:event_bubahActionPerformed
+
+    private void bhapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bhapusActionPerformed
+        int ok = JOptionPane.showConfirmDialog(null,"hapus","konfirmasi dialog",JOptionPane.YES_NO_OPTION);
+                if (ok==0){
+                    String sql = "delete from daftar where nama = '"+txtnm.getText()+"'";
+                    try{
+                        PreparedStatement stat = conn.prepareStatement(sql);
+                        stat.executeUpdate();
+                        JOptionPane.showMessageDialog(null, "data berhasil dihapus");
+                        kosong();
+                        txtnm.requestFocus();
+                    }
+                    catch (SQLException e){
+                        JOptionPane.showMessageDialog(null, "data gagal diubah"+e);
+                    }
+                    datatable();
+                 }
+    }//GEN-LAST:event_bhapusActionPerformed
+
+    private void bbatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bbatalActionPerformed
+        kosong();
+        datatable();
+    }//GEN-LAST:event_bbatalActionPerformed
 
     /**
      * @param args the command line arguments
