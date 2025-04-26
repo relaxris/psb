@@ -13,13 +13,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 /**
  *
  * @author user
  */
 public class daftar extends javax.swing.JFrame {
-private Connection conn = new koneksi().connect();
+    String tgldaftar;
+    private Connection conn = new koneksi().connect();
 private DefaultTableModel tabmode;
     /**
      * Creates new form Daftar
@@ -53,7 +57,7 @@ private DefaultTableModel tabmode;
         buttonGroup1.clearSelection();
     }
     protected void datatable(){
-    Object[] Baris={"Tanggal Daftar", "Nama Siswa", "Jenis Kelamin", "Asal Sekolah", "NISN", "NIK", "Nomor KK", "Tempat Tanggal Lahir", "Alamat"};
+    Object[] Baris={"Tanggal Daftar", "Nama Siswa", "Jenis Kelamin", "Asal Sekolah", "NISN", "NIK", "Nomor KK", "Tempat Tanggal Lahir", "Alamat", "Nama Ayah", "Pekerjaan", "Nama Ibu", "Pekerjaan", "Nama Wali", "Pekerjaan"};
         tabmode = new DefaultTableModel (null, Baris);
         //tablebarang.setModel(tabmode);
         String cariitem=txtcari.getText();
@@ -154,6 +158,12 @@ private DefaultTableModel tabmode;
 
         jLabel2.setText("Tanggal Daftar");
 
+        tgl.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                tglPropertyChange(evt);
+            }
+        });
+
         jLabel3.setFont(new java.awt.Font("Tahoma", 3, 16)); // NOI18N
         jLabel3.setText("I. Identitas Calon Peserta Didik Baru");
 
@@ -233,7 +243,23 @@ private DefaultTableModel tabmode;
             }
         });
 
+        txtcari.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtcariKeyPressed(evt);
+            }
+        });
+
         bcari.setText("Cari");
+        bcari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bcariActionPerformed(evt);
+            }
+        });
+        bcari.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                bcariKeyPressed(evt);
+            }
+        });
 
         tabledaftar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -246,6 +272,11 @@ private DefaultTableModel tabmode;
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tabledaftar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabledaftarMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tabledaftar);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -461,7 +492,7 @@ private DefaultTableModel tabmode;
         String sql = "insert into daftar values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try{
             PreparedStatement stat = conn.prepareStatement(sql);
-            stat.setString(1, tgl.getDateFormatString());
+            stat.setString(1, tgldaftar);
             stat.setString(2, txtnm.getText());
             stat.setString(3, jenis);
             stat.setString(4, txtasal.getText());
@@ -493,7 +524,7 @@ private DefaultTableModel tabmode;
     }//GEN-LAST:event_bkeluarActionPerformed
 
     private void bubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bubahActionPerformed
-String jenis = null;
+    String jenis = null;
         if(rlaki.isSelected()){
             jenis = "Laki-Laki";
         }
@@ -501,32 +532,31 @@ String jenis = null;
             jenis = "Perempuan";
         }
         
-        String sql = "update daftar set tgl=?, nama=?, jenis=?, asal_sekolah=?, nisn=?, nik=?, nomor_kk=?, ttl=?, alamat=?, n_ayah=?, k_ayah=?, n_ibu=?, k_ibu=?, n_wali=?, k_wali?";
+        String sql = "update daftar set nama=?, jenis=?, asal_sekolah=?, nisn=?, nik=?, nomor_kk=?, ttl=?, alamat=?, n_ayah=?, k_ayah=?, n_ibu=?, k_ibu=?, n_wali=?, k_wali=? where nama='"+txtnm.getText()+"'";
         try{
-            PreparedStatement stat = conn.prepareStatement(sql);
-            stat.setString(1, tgl.getDateFormatString());
-            stat.setString(2, txtnm.getText());
-            stat.setString(3, jenis);
-            stat.setString(4, txtasal.getText());
-            stat.setString(5, txtnisn.getText());
-            stat.setString(6, txtnik.getText());
-            stat.setString(7, txtkk.getText());
-            stat.setString(8, txtttl.getText());
-            stat.setString(9, txtalamat.getText());
-            stat.setString(10, txtnayah.getText());
-            stat.setString(11, txtkayah.getText());
-            stat.setString(12, txtnibu.getText());
-            stat.setString(13, txtkibu.getText());
-            stat.setString(14, txtnwali.getText());
-            stat.setString(15, txtkwali.getText());
+            PreparedStatement stat = conn.prepareStatement(sql);  
+            stat.setString(1, txtnm.getText());
+            stat.setString(2, jenis);
+            stat.setString(3, txtasal.getText());
+            stat.setString(4, txtnisn.getText());
+            stat.setString(5, txtnik.getText());
+            stat.setString(6, txtkk.getText());
+            stat.setString(7, txtttl.getText());
+            stat.setString(8, txtalamat.getText());
+            stat.setString(9, txtnayah.getText());
+            stat.setString(10, txtkayah.getText());
+            stat.setString(11, txtnibu.getText());
+            stat.setString(12, txtkibu.getText());
+            stat.setString(13, txtnwali.getText());
+            stat.setString(14, txtkwali.getText());
             
             stat.executeUpdate();
-            JOptionPane.showMessageDialog(null, "data berhasil disimpan");
+            JOptionPane.showMessageDialog(null, "data berhasil diubah");
             kosong();
             txtnm.requestFocus();
         }
         catch (SQLException e){
-            JOptionPane.showMessageDialog(null, "data gagal disimpan"+e);
+            JOptionPane.showMessageDialog(null, "data gagal diubah"+e);
         }
         datatable();
     }//GEN-LAST:event_bubahActionPerformed
@@ -554,6 +584,65 @@ String jenis = null;
         datatable();
     }//GEN-LAST:event_bbatalActionPerformed
 
+    private void bcariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bcariActionPerformed
+        datatable();
+    }//GEN-LAST:event_bcariActionPerformed
+
+    private void bcariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_bcariKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bcariKeyPressed
+
+    private void txtcariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcariKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
+            datatable();
+        }
+    }//GEN-LAST:event_txtcariKeyPressed
+
+    private void tabledaftarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabledaftarMouseClicked
+        int bar = tabledaftar.getSelectedRow();
+        String b = tabmode.getValueAt(bar, 1).toString();
+        String c = tabmode.getValueAt(bar, 2).toString();
+        String d = tabmode.getValueAt(bar, 3).toString();
+        String e = tabmode.getValueAt(bar, 4).toString();
+        String f = tabmode.getValueAt(bar, 5).toString();
+        String g = tabmode.getValueAt(bar, 6).toString();
+        String h = tabmode.getValueAt(bar, 7).toString();
+        String i = tabmode.getValueAt(bar, 8).toString();
+        String j = tabmode.getValueAt(bar, 9).toString();
+        String k = tabmode.getValueAt(bar, 10).toString();
+        String l = tabmode.getValueAt(bar, 11).toString();
+        String m = tabmode.getValueAt(bar, 12).toString();
+        String n = tabmode.getValueAt(bar, 13).toString();
+        String o = tabmode.getValueAt(bar, 14).toString();
+        
+        txtnm.setText(b);
+        if ("Laki-Laki".equals(c)) {
+            rlaki.setSelected(true);
+            }else{
+            rperempuan.setSelected(true);
+            }
+        txtasal.setText(d);
+        txtnisn.setText(e);   
+        txtnik.setText(f);
+        txtkk.setText(g);
+        txtttl.setText(h);
+        txtalamat.setText(i);
+        txtnayah.setText(j);
+        txtkayah.setText(k);
+        txtnibu.setText(l);
+        txtkibu.setText(m);
+        txtnwali.setText(n);
+        txtkwali.setText(o);
+        
+    }//GEN-LAST:event_tabledaftarMouseClicked
+
+    private void tglPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tglPropertyChange
+        if (tgl.getDate() !=null ) {
+                SimpleDateFormat Format = new SimpleDateFormat("yyyy-MM-dd");
+                tgldaftar = Format.format (tgl.getDate());
+        }
+    }//GEN-LAST:event_tglPropertyChange
+    
     /**
      * @param args the command line arguments
      */
