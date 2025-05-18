@@ -123,7 +123,7 @@ private DefaultTableModel tabmode;
     public void hitung(){
     int total = 0;
     for (int i = 0; i < tbltransaksi.getRowCount(); i++) {
-        int amount = Integer.valueOf(tbltransaksi.getValueAt(i, 5).toString());
+        int amount = Integer.valueOf(tbltransaksi.getValueAt(i, 2).toString());
         total += amount;
     }
     txttotal.setText(Integer.toString(total));
@@ -214,6 +214,11 @@ private DefaultTableModel tabmode;
         jLabel14.setText("Nominal");
 
         btambah.setText("Tambah");
+        btambah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btambahActionPerformed(evt);
+            }
+        });
 
         tbltransaksi.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -229,12 +234,32 @@ private DefaultTableModel tabmode;
         jScrollPane1.setViewportView(tbltransaksi);
 
         bsimpan.setText("Simpan");
+        bsimpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bsimpanActionPerformed(evt);
+            }
+        });
 
         bbatal.setText("Batal");
+        bbatal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bbatalActionPerformed(evt);
+            }
+        });
 
         bkeluar.setText("Keluar");
+        bkeluar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bkeluarActionPerformed(evt);
+            }
+        });
 
         bhapus.setText("Hapus");
+        bhapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bhapusActionPerformed(evt);
+            }
+        });
 
         jLabel15.setText("Total Biaya");
 
@@ -425,6 +450,76 @@ private DefaultTableModel tabmode;
         Pb.setVisible(true);
         Pb.setResizable(false);
     }//GEN-LAST:event_bcaribiayaActionPerformed
+
+    private void btambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btambahActionPerformed
+            try {
+        String kode = txtkode.getText();
+        String jenisbiaya = txtbiaya.getText();
+        int nominal = Integer.parseInt(txtnominal.getText());
+
+        tabmode.addRow(new Object[]{kode, jenisbiaya, nominal});
+        tbltransaksi.setModel(tabmode);
+        } catch (Exception e) {
+        System.out.println("Error : " + e);
+        }
+
+        txtkode.setText("");
+        txtbiaya.setText("");
+        txtnominal.setText("");
+        txttotal.setText("");
+        hitung();
+    }//GEN-LAST:event_btambahActionPerformed
+
+    private void bhapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bhapusActionPerformed
+        int index = tbltransaksi.getSelectedRow();
+        tabmode.removeRow(index);
+        tbltransaksi.setModel(tabmode);
+        hitung();
+    }//GEN-LAST:event_bhapusActionPerformed
+
+    private void bkeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bkeluarActionPerformed
+        dispose();
+    }//GEN-LAST:event_bkeluarActionPerformed
+
+    private void bbatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bbatalActionPerformed
+        kosong();
+        aktif();
+        autonumber();
+    }//GEN-LAST:event_bbatalActionPerformed
+
+    private void bsimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bsimpanActionPerformed
+    String sql = "insert into nota values (?,?,?,?)";
+    String zsql = "insert into isi values (?,?,?,?,?)";
+    try {
+        PreparedStatement stat = conn.prepareStatement(sql);
+        stat.setString(1, txtidnota.getText());
+        stat.setString(2, tgl);
+        stat.setString(3, txtnisn.getText());
+        stat.setString(4, jLabel16.getText());
+
+        stat.executeUpdate();
+
+        int t = tbltransaksi.getRowCount();
+        for (int i = 0; i < t; i++) {
+            String xkd = tbltransaksi.getValueAt(i, 0).toString();
+            String xnominal = tbltransaksi.getValueAt(i, 3).toString();
+
+            PreparedStatement stat2 = conn.prepareStatement(zsql);
+            stat2.setString(1, txtidnota.getText());
+            stat2.setString(2, xkd);
+            stat2.setString(3, xnominal);
+
+            stat2.executeUpdate();
+        }
+        JOptionPane.showMessageDialog(null, "data berhasil disimpan");
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "data gagal disimpan" + e);
+    }
+
+    kosong();
+    aktif();
+    autonumber();
+    }//GEN-LAST:event_bsimpanActionPerformed
 
     /**
      * @param args the command line arguments
