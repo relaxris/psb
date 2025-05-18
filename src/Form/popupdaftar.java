@@ -38,7 +38,7 @@ public class popupdaftar extends javax.swing.JFrame {
             ResultSet hasil = stat.executeQuery(sql);
             while (hasil.next()){
                 tabmode.addRow(new Object[]{
-                    hasil.getString(1),
+                    hasil.getString(5),
                     hasil.getString(2),
                     hasil.getString(3),
                     hasil.getString(4),

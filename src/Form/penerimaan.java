@@ -17,9 +17,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.view.JasperViewer;   
+ 
 /**
  *
  * @author user
@@ -131,17 +129,6 @@ private DefaultTableModel tabmode;
     txttotal.setText(Integer.toString(total));
     }
     
-    public void cetak (){
-        try {
-        String path = "./src/nota.jasper";  // letak penyimpanan ireport
-        HashMap parameter = new HashMap();
-        parameter.put("id_nota", txtidnota.getText());
-        JasperPrint print = JasperFillManager.fillReport(path, parameter, conn);
-        JasperViewer.viewReport(print, false);
-        }catch (Exception ex) {
-        JOptionPane.showMessageDialog(rootPane, "Dokumen Tidak Ada " + ex);
-        }
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -177,7 +164,7 @@ private DefaultTableModel tabmode;
         bhapus = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         txtnisn = new javax.swing.JTextField();
-        jButton6 = new javax.swing.JButton();
+        bcarisiswa = new javax.swing.JButton();
         txtnama = new javax.swing.JTextField();
         txtjenis = new javax.swing.JTextField();
         txtasal = new javax.swing.JTextField();
@@ -185,7 +172,7 @@ private DefaultTableModel tabmode;
         txtbiaya = new javax.swing.JTextField();
         txtnominal = new javax.swing.JTextField();
         txttotal = new javax.swing.JTextField();
-        jButton7 = new javax.swing.JButton();
+        bcaribiaya = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
 
@@ -251,9 +238,19 @@ private DefaultTableModel tabmode;
 
         jLabel15.setText("Total Biaya");
 
-        jButton6.setText("cari");
+        bcarisiswa.setText("cari");
+        bcarisiswa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bcarisiswaActionPerformed(evt);
+            }
+        });
 
-        jButton7.setText("Cari");
+        bcaribiaya.setText("Cari");
+        bcaribiaya.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bcaribiayaActionPerformed(evt);
+            }
+        });
 
         jLabel16.setText("jLabel16");
 
@@ -291,7 +288,7 @@ private DefaultTableModel tabmode;
                                         .addGroup(layout.createSequentialGroup()
                                             .addComponent(txtnisn, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jButton6))
+                                            .addComponent(bcarisiswa))
                                         .addComponent(txtidnota)
                                         .addComponent(txtnama)
                                         .addComponent(txtjenis)
@@ -312,7 +309,7 @@ private DefaultTableModel tabmode;
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(txtkode)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jButton7))
+                                                .addComponent(bcaribiaya))
                                             .addComponent(txtbiaya)
                                             .addComponent(txtnominal)
                                             .addGroup(layout.createSequentialGroup()
@@ -371,9 +368,9 @@ private DefaultTableModel tabmode;
                             .addComponent(jLabel8)
                             .addComponent(jLabel12)
                             .addComponent(txtnisn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton6)
+                            .addComponent(bcarisiswa)
                             .addComponent(txtkode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton7))
+                            .addComponent(bcaribiaya))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
@@ -415,6 +412,20 @@ private DefaultTableModel tabmode;
         }
     }//GEN-LAST:event_tglnotaPropertyChange
 
+    private void bcarisiswaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bcarisiswaActionPerformed
+        popupdaftar Pd = new popupdaftar ();
+        Pd.daftar = this;
+        Pd.setVisible(true);
+        Pd.setResizable(false);
+    }//GEN-LAST:event_bcarisiswaActionPerformed
+
+    private void bcaribiayaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bcaribiayaActionPerformed
+        popupbiaya Pb = new popupbiaya ();
+        Pb.biaya = this;
+        Pb.setVisible(true);
+        Pb.setResizable(false);
+    }//GEN-LAST:event_bcaribiayaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -452,12 +463,12 @@ private DefaultTableModel tabmode;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bbatal;
+    private javax.swing.JButton bcaribiaya;
+    private javax.swing.JButton bcarisiswa;
     private javax.swing.JButton bhapus;
     private javax.swing.JButton bkeluar;
     private javax.swing.JButton bsimpan;
     private javax.swing.JButton btambah;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

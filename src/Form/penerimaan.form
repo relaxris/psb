@@ -54,7 +54,7 @@
                                       <Group type="102" attributes="0">
                                           <Component id="txtnisn" min="-2" pref="74" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="jButton6" min="-2" max="-2" attributes="0"/>
+                                          <Component id="bcarisiswa" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Component id="txtidnota" max="32767" attributes="0"/>
                                       <Component id="txtnama" max="32767" attributes="0"/>
@@ -81,7 +81,7 @@
                                           <Group type="102" attributes="0">
                                               <Component id="txtkode" max="32767" attributes="0"/>
                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="jButton7" min="-2" max="-2" attributes="0"/>
+                                              <Component id="bcaribiaya" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Component id="txtbiaya" alignment="0" max="32767" attributes="0"/>
                                           <Component id="txtnominal" alignment="0" max="32767" attributes="0"/>
@@ -159,9 +159,9 @@
                           <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtnisn" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton6" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="bcarisiswa" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtkode" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton7" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="bcaribiaya" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -337,10 +337,13 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtnisn">
     </Component>
-    <Component class="javax.swing.JButton" name="jButton6">
+    <Component class="javax.swing.JButton" name="bcarisiswa">
       <Properties>
         <Property name="text" type="java.lang.String" value="cari"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bcarisiswaActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtnama">
     </Component>
@@ -356,10 +359,13 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txttotal">
     </Component>
-    <Component class="javax.swing.JButton" name="jButton7">
+    <Component class="javax.swing.JButton" name="bcaribiaya">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cari"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bcaribiayaActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel16">
       <Properties>
