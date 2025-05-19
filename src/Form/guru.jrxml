@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="94951f17-31e0-4f2f-b2e1-ee9a3d7a701c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     guru.`nip` AS guru_nip,
+     guru.`nama` AS guru_nama,
+     guru.`jenis_kelamin` AS guru_jenis_kelamin,
+     guru.`password` AS guru_password
+FROM
+     `guru` guru]]>
+	</queryString>
+	<field name="guru_nip" class="java.lang.String"/>
+	<field name="guru_nama" class="java.lang.String"/>
+	<field name="guru_jenis_kelamin" class="java.lang.String"/>
+	<field name="guru_password" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="25" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="49" splitType="Stretch">
+			<staticText>
+				<reportElement x="139" y="0" width="273" height="37" uuid="4754da4f-3f0e-4002-a955-79e89b23cca3"/>
+				<textElement>
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LAPORAN DATA GURU]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<staticText>
+				<reportElement x="98" y="2" width="100" height="20" uuid="0605e78c-942c-40be-bf7d-a62a8bbf0225"/>
+				<text><![CDATA[NIP GURU]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="232" y="2" width="100" height="20" uuid="691843b3-63ac-4e6e-8e91-4c1d88c2e9d2"/>
+				<text><![CDATA[NAMA GURU]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="396" y="2" width="100" height="20" uuid="cb92bdf2-77f2-4e35-aefd-7bd84af4dca0"/>
+				<text><![CDATA[JENIS KELAMIN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="18" y="0" width="53" height="20" uuid="c36f8c0b-ed0c-46f0-8ed0-607650446ab1"/>
+				<text><![CDATA[NO]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="39" splitType="Stretch">
+			<textField>
+				<reportElement x="98" y="19" width="100" height="20" uuid="3f3525e5-e223-4751-ae08-8a4bebbabcaa"/>
+				<textFieldExpression><![CDATA[$F{guru_nip}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="232" y="19" width="100" height="20" uuid="6b398c38-1c0b-4a40-8aba-43a087eb35b9"/>
+				<textFieldExpression><![CDATA[$F{guru_nama}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="396" y="19" width="100" height="20" uuid="2042c327-251b-4a07-b881-65918ca01209"/>
+				<textFieldExpression><![CDATA[$F{guru_jenis_kelamin}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="18" y="19" width="55" height="20" uuid="dd15a1b2-e0d9-46bb-9c47-970aa2216bf6"/>
+				<textFieldExpression><![CDATA[$V{COLUMN_COUNT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
