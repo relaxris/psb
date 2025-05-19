@@ -17,7 +17,9 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
- 
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer; 
 /**
  *
  * @author user
@@ -129,6 +131,17 @@ private DefaultTableModel tabmode;
     txttotal.setText(Integer.toString(total));
     }
     
+        public void cetak (){
+        try {
+        String path = "./src/form/notadaftar.jasper";  // letak penyimpanan ireport
+        HashMap parameter = new HashMap();
+        parameter.put("id_nota", txtidnota.getText());
+        JasperPrint print = JasperFillManager.fillReport(path, parameter, conn);
+        JasperViewer.viewReport(print, false);
+        }catch (Exception ex) {
+        JOptionPane.showMessageDialog(rootPane, "Dokumen Tidak Ada " + ex);
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -489,7 +502,7 @@ private DefaultTableModel tabmode;
 
     private void bsimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bsimpanActionPerformed
     String sql = "insert into nota values (?,?,?,?)";
-    String zsql = "insert into isi values (?,?,?,?,?)";
+    String zsql = "insert into isi values (?,?,?)";
     try {
         PreparedStatement stat = conn.prepareStatement(sql);
         stat.setString(1, txtidnota.getText());
@@ -502,7 +515,7 @@ private DefaultTableModel tabmode;
         int t = tbltransaksi.getRowCount();
         for (int i = 0; i < t; i++) {
             String xkd = tbltransaksi.getValueAt(i, 0).toString();
-            String xnominal = tbltransaksi.getValueAt(i, 3).toString();
+            String xnominal = tbltransaksi.getValueAt(i, 2).toString();
 
             PreparedStatement stat2 = conn.prepareStatement(zsql);
             stat2.setString(1, txtidnota.getText());
@@ -512,6 +525,7 @@ private DefaultTableModel tabmode;
             stat2.executeUpdate();
         }
         JOptionPane.showMessageDialog(null, "data berhasil disimpan");
+        cetak();
     } catch (SQLException e) {
         JOptionPane.showMessageDialog(null, "data gagal disimpan" + e);
     }

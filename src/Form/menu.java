@@ -4,13 +4,14 @@
  * and open the template in the editor.
  */
 package Form;
-
+import Koneksi.koneksi;
+import java.sql.*;
 /**
  *
  * @author user
  */
 public class menu extends javax.swing.JFrame {
-
+private Connection conn = new koneksi().connect();
     /**
      * Creates new form menu
      */
@@ -27,21 +28,132 @@ public class menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        guru = new javax.swing.JMenuItem();
+        mapel = new javax.swing.JMenuItem();
+        biaya = new javax.swing.JMenuItem();
+        daftar = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        nota = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+
+        jMenuItem1.setText("jMenuItem1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setText("Aplikasi Penerimaan Siswa Baru");
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel2.setText("Madrasah Ibtidaiyah Tarbiyatul Aulad");
+
+        jMenu1.setText("Pendaftaran");
+
+        guru.setText("Guru");
+        guru.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guruActionPerformed(evt);
+            }
+        });
+        jMenu1.add(guru);
+
+        mapel.setText("Mapel");
+        mapel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mapelActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mapel);
+
+        biaya.setText("Biaya");
+        biaya.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                biayaActionPerformed(evt);
+            }
+        });
+        jMenu1.add(biaya);
+
+        daftar.setText("Formulir Pendaftaran");
+        daftar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                daftarActionPerformed(evt);
+            }
+        });
+        jMenu1.add(daftar);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Nota");
+
+        nota.setText("Penerimaan");
+        nota.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                notaActionPerformed(evt);
+            }
+        });
+        jMenu2.add(nota);
+
+        jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("Laporan");
+        jMenuBar1.add(jMenu3);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(114, 114, 114)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(jLabel1))
+                    .addComponent(jLabel2))
+                .addContainerGap(127, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(117, 117, 117)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel2)
+                .addContainerGap(158, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void guruActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guruActionPerformed
+        guru fg = new guru ();
+        fg.setVisible(true);        
+    }//GEN-LAST:event_guruActionPerformed
+
+    private void mapelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mapelActionPerformed
+        mapel fm = new mapel ();
+        fm.setVisible(true); 
+    }//GEN-LAST:event_mapelActionPerformed
+
+    private void biayaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_biayaActionPerformed
+        biaya fb = new biaya ();
+        fb.setVisible(true); 
+    }//GEN-LAST:event_biayaActionPerformed
+
+    private void daftarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_daftarActionPerformed
+        daftar fd = new daftar ();
+        fd.setVisible(true);
+    }//GEN-LAST:event_daftarActionPerformed
+
+    private void notaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_notaActionPerformed
+        penerimaan fp = new penerimaan ();
+        fp.setVisible(true);
+    }//GEN-LAST:event_notaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +191,17 @@ public class menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem biaya;
+    private javax.swing.JMenuItem daftar;
+    private javax.swing.JMenuItem guru;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem mapel;
+    private javax.swing.JMenuItem nota;
     // End of variables declaration//GEN-END:variables
 }
