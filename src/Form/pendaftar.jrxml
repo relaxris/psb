@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="862a0c6e-a7be-49e5-b13f-d11637c66d1c">
+	<property name="ireport.zoom" value="1.3310000000000013"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     daftar.`tgl` AS daftar_tgl,
+     daftar.`nama` AS daftar_nama,
+     daftar.`jenis` AS daftar_jenis,
+     daftar.`asal_sekolah` AS daftar_asal_sekolah,
+     daftar.`nisn` AS daftar_nisn,
+     daftar.`nik` AS daftar_nik,
+     daftar.`nomor_kk` AS daftar_nomor_kk,
+     daftar.`ttl` AS daftar_ttl,
+     daftar.`alamat` AS daftar_alamat,
+     daftar.`n_ayah` AS daftar_n_ayah,
+     daftar.`k_ayah` AS daftar_k_ayah,
+     daftar.`n_ibu` AS daftar_n_ibu,
+     daftar.`k_ibu` AS daftar_k_ibu,
+     daftar.`n_wali` AS daftar_n_wali,
+     daftar.`k_wali` AS daftar_k_wali
+FROM
+     `daftar` daftar]]>
+	</queryString>
+	<field name="daftar_tgl" class="java.lang.String"/>
+	<field name="daftar_nama" class="java.lang.String"/>
+	<field name="daftar_jenis" class="java.lang.String"/>
+	<field name="daftar_asal_sekolah" class="java.lang.String"/>
+	<field name="daftar_nisn" class="java.lang.String"/>
+	<field name="daftar_nik" class="java.lang.String"/>
+	<field name="daftar_nomor_kk" class="java.lang.String"/>
+	<field name="daftar_ttl" class="java.lang.String"/>
+	<field name="daftar_alamat" class="java.lang.String"/>
+	<field name="daftar_n_ayah" class="java.lang.String"/>
+	<field name="daftar_k_ayah" class="java.lang.String"/>
+	<field name="daftar_n_ibu" class="java.lang.String"/>
+	<field name="daftar_k_ibu" class="java.lang.String"/>
+	<field name="daftar_n_wali" class="java.lang.String"/>
+	<field name="daftar_k_wali" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="28" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="46" splitType="Stretch">
+			<staticText>
+				<reportElement x="102" y="0" width="359" height="41" uuid="5c6b9858-bfc5-4dd3-8c4b-85f7f2000956"/>
+				<textElement>
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LAPORAN DATA PENDAFTAR]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="24" splitType="Stretch">
+			<staticText>
+				<reportElement x="60" y="1" width="65" height="20" uuid="77a2207a-8623-4bf2-b284-e008d61d9f86"/>
+				<text><![CDATA[Nama Siswa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="155" y="1" width="62" height="20" uuid="a2eca79f-462e-4ffa-8c5d-6dcd2f62a19d"/>
+				<text><![CDATA[NISN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="248" y="1" width="100" height="20" uuid="6c9fc0dd-ccf8-4778-9ea6-6b3bc54cfb01"/>
+				<text><![CDATA[Tempat Tanggal Lahir]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="372" y="1" width="74" height="20" uuid="02a582aa-d7ab-40cd-98dc-38e71f0212fb"/>
+				<text><![CDATA[Tanggal Daftar]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="15" y="1" width="18" height="20" uuid="19fb34db-a21f-4c8a-a909-6d12c97e48d3"/>
+				<text><![CDATA[No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="472" y="1" width="62" height="20" uuid="f252a8ef-843f-4bbf-a84a-7f0574912b8a"/>
+				<text><![CDATA[Alamat]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="34" splitType="Stretch">
+			<textField>
+				<reportElement x="60" y="10" width="77" height="20" uuid="f26ff8a9-ffb2-4222-8d92-abfc07fdeca1"/>
+				<textFieldExpression><![CDATA[$F{daftar_nama}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="155" y="10" width="75" height="20" uuid="410f2c07-1418-4df0-909b-47bba708c912"/>
+				<textFieldExpression><![CDATA[$F{daftar_nisn}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="265" y="10" width="62" height="20" uuid="d022a2f2-d310-4a2d-9489-0758f04d9c9a"/>
+				<textFieldExpression><![CDATA[$F{daftar_ttl}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="372" y="10" width="63" height="20" uuid="db8cb177-657b-4177-ab7c-249f4a6c34cb"/>
+				<textFieldExpression><![CDATA[$F{daftar_tgl}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="15" y="10" width="18" height="20" uuid="e0cf5fb0-d3b7-4126-aadb-a6ce5704b2eb"/>
+				<textFieldExpression><![CDATA[$V{COLUMN_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="472" y="10" width="62" height="20" uuid="80b16e7b-214b-4353-8424-678679acf32a"/>
+				<textFieldExpression><![CDATA[$F{daftar_alamat}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -6,6 +6,11 @@
 package Form;
 import Koneksi.koneksi;
 import java.sql.*;
+import java.util.HashMap;
+import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 /**
  *
  * @author user
@@ -40,6 +45,7 @@ private Connection conn = new koneksi().connect();
         jMenu2 = new javax.swing.JMenu();
         nota = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -100,6 +106,15 @@ private Connection conn = new koneksi().connect();
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Laporan");
+
+        jMenuItem2.setText("Laporan Data Pendaftar");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem2);
+
         jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
@@ -155,6 +170,17 @@ private Connection conn = new koneksi().connect();
         fp.setVisible(true);
     }//GEN-LAST:event_notaActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        try {
+        String path = "./src/form/pendaftar.jasper"; // letak penyimpanan report
+        HashMap parameter = new HashMap();
+        JasperPrint print = JasperFillManager.fillReport(path, parameter, conn);
+        JasperViewer.viewReport(print, false);
+    } catch (Exception ex) {
+        JOptionPane.showMessageDialog(rootPane, "Dokumen Tidak Ada " + ex);
+    }// TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -201,6 +227,7 @@ private Connection conn = new koneksi().connect();
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem mapel;
     private javax.swing.JMenuItem nota;
     // End of variables declaration//GEN-END:variables

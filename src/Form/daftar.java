@@ -532,7 +532,7 @@ private DefaultTableModel tabmode;
             jenis = "Perempuan";
         }
         
-        String sql = "update daftar set nama=?, jenis=?, asal_sekolah=?, nisn=?, nik=?, nomor_kk=?, ttl=?, alamat=?, n_ayah=?, k_ayah=?, n_ibu=?, k_ibu=?, n_wali=?, k_wali=? where nama='"+txtnm.getText()+"'";
+        String sql = "update daftar set nama=?, jenis=?, asal_sekolah=?, nisn=?, nik=?, nomor_kk=?, ttl=?, alamat=?, n_ayah=?, k_ayah=?, n_ibu=?, k_ibu=?, n_wali=?, k_wali=? where nisn='"+txtnisn.getText()+"'";
         try{
             PreparedStatement stat = conn.prepareStatement(sql);  
             stat.setString(1, txtnm.getText());
