@@ -46,6 +46,7 @@ private Connection conn = new koneksi().connect();
         nota = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -115,6 +116,14 @@ private Connection conn = new koneksi().connect();
         });
         jMenu3.add(jMenuItem2);
 
+        jMenuItem3.setText("Laporan Data Guru");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem3);
+
         jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
@@ -181,6 +190,17 @@ private Connection conn = new koneksi().connect();
     }// TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        try {
+        String path = "./src/form/guru.jasper"; // letak penyimpanan report
+        HashMap parameter = new HashMap();
+        JasperPrint print = JasperFillManager.fillReport(path, parameter, conn);
+        JasperViewer.viewReport(print, false);
+    } catch (Exception ex) {
+        JOptionPane.showMessageDialog(rootPane, "Dokumen Tidak Ada " + ex);
+    }
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -228,6 +248,7 @@ private Connection conn = new koneksi().connect();
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem mapel;
     private javax.swing.JMenuItem nota;
     // End of variables declaration//GEN-END:variables
