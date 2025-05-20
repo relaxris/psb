@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="398820c5-afb1-4654-9e59-7d7f576ba3cf">
+	<property name="ireport.zoom" value="1.948717100000002"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     biaya.`kd_biaya` AS biaya_kd_biaya,
+     biaya.`rincian` AS biaya_rincian,
+     biaya.`nominal` AS biaya_nominal
+FROM
+     `biaya` biaya]]>
+	</queryString>
+	<field name="biaya_kd_biaya" class="java.lang.String"/>
+	<field name="biaya_rincian" class="java.lang.String"/>
+	<field name="biaya_nominal" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="15" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="48" splitType="Stretch">
+			<staticText>
+				<reportElement x="142" y="0" width="274" height="31" uuid="2a4dd3e3-65df-4081-87ec-d3c42054fb9c"/>
+				<textElement>
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LAPORAN DATA BIAYA]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement x="121" y="2" width="100" height="20" uuid="9c0b0f6b-d121-4606-91bf-9a0f44cec84a"/>
+				<text><![CDATA[Kode Biaya]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="254" y="2" width="100" height="20" uuid="02b15941-e4a9-43d7-9684-5f2f8aa1c1ac"/>
+				<text><![CDATA[Rincian Biaya]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="393" y="2" width="100" height="20" uuid="daa99c26-bd5d-4371-bb44-7859899d6ab7"/>
+				<text><![CDATA[Nominal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="57" y="2" width="25" height="20" uuid="0273ae4a-e8f3-4032-82f1-5d98a68cfce7"/>
+				<text><![CDATA[No]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="29" splitType="Stretch">
+			<textField>
+				<reportElement x="121" y="9" width="100" height="20" uuid="817c188b-3161-4f24-901b-69c95cf36a39"/>
+				<textFieldExpression><![CDATA[$F{biaya_kd_biaya}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="254" y="9" width="100" height="20" uuid="bfc0ec98-b979-4ef1-8b1e-052e2d355005"/>
+				<textFieldExpression><![CDATA[$F{biaya_rincian}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="393" y="9" width="100" height="20" uuid="43d0174d-acbf-46fa-99d1-f04e0066082e"/>
+				<textFieldExpression><![CDATA[$F{biaya_nominal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="57" y="9" width="25" height="20" uuid="a9b37c2a-2bca-4686-a8c8-7559db6eeaae"/>
+				<textFieldExpression><![CDATA[$V{COLUMN_COUNT}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="57" y="0" width="436" height="1" uuid="c02dbc1f-3e57-4f77-aa45-afc9b18d0f06"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

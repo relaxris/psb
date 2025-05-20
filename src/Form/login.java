@@ -34,7 +34,8 @@ private Connection conn = new koneksi().connect();
         jLabel3 = new javax.swing.JLabel();
         blogin = new javax.swing.JButton();
         txtnip = new javax.swing.JTextField();
-        txtpassword = new javax.swing.JTextField();
+        txtpassword = new javax.swing.JPasswordField();
+        jcshpw = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -45,10 +46,19 @@ private Connection conn = new koneksi().connect();
 
         jLabel3.setText("Password");
 
+        blogin.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         blogin.setText("Login");
         blogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bloginActionPerformed(evt);
+            }
+        });
+
+        jcshpw.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jcshpw.setText("Show Password");
+        jcshpw.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcshpwActionPerformed(evt);
             }
         });
 
@@ -57,22 +67,22 @@ private Connection conn = new koneksi().connect();
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(84, 84, 84)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtpassword)
-                    .addComponent(txtnip, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(190, 190, 190)
-                .addComponent(blogin)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(84, 84, 84)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jcshpw)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtnip, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
+                                .addComponent(txtpassword))
+                            .addComponent(blogin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -88,9 +98,11 @@ private Connection conn = new koneksi().connect();
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addComponent(blogin)
-                .addGap(28, 28, 28))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jcshpw)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(blogin, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -114,6 +126,15 @@ private Connection conn = new koneksi().connect();
     JOptionPane.showMessageDialog(null, "Gagal Login !!!!" + e);
 }        // TODO add your handling code here:
     }//GEN-LAST:event_bloginActionPerformed
+
+    private void jcshpwActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcshpwActionPerformed
+        if (jcshpw.isSelected()){
+            txtpassword.setEchoChar((char)0);
+        }
+        else {
+            txtpassword.setEchoChar('*');
+        }
+    }//GEN-LAST:event_jcshpwActionPerformed
 
     /**
      * @param args the command line arguments
@@ -155,7 +176,8 @@ private Connection conn = new koneksi().connect();
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JCheckBox jcshpw;
     private javax.swing.JTextField txtnip;
-    private javax.swing.JTextField txtpassword;
+    private javax.swing.JPasswordField txtpassword;
     // End of variables declaration//GEN-END:variables
 }
