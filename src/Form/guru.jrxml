@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="94951f17-31e0-4f2f-b2e1-ee9a3d7a701c">
-	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.zoom" value="1.6105100000000099"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<queryString language="SQL">
@@ -20,7 +20,16 @@ FROM
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="25" splitType="Stretch"/>
+		<band height="103" splitType="Stretch">
+			<image>
+				<reportElement x="455" y="0" width="100" height="100" uuid="ca426c77-7db1-4cf9-b33b-9230c38c8632"/>
+				<imageExpression><![CDATA["C:\\Users\\user\\Downloads\\yayasan.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="0" y="3" width="101" height="100" uuid="a36b6e9d-295a-4a27-ae87-a2efbed195aa"/>
+				<imageExpression><![CDATA["C:\\Users\\user\\Downloads\\logo.png"]]></imageExpression>
+			</image>
+		</band>
 	</title>
 	<pageHeader>
 		<band height="49" splitType="Stretch">
@@ -34,43 +43,76 @@ FROM
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="25" splitType="Stretch">
+		<band height="23" splitType="Stretch">
 			<staticText>
-				<reportElement x="98" y="2" width="100" height="20" uuid="0605e78c-942c-40be-bf7d-a62a8bbf0225"/>
+				<reportElement x="149" y="0" width="100" height="20" uuid="0605e78c-942c-40be-bf7d-a62a8bbf0225"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[NIP GURU]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="232" y="2" width="100" height="20" uuid="691843b3-63ac-4e6e-8e91-4c1d88c2e9d2"/>
+				<reportElement x="274" y="0" width="100" height="20" uuid="691843b3-63ac-4e6e-8e91-4c1d88c2e9d2"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[NAMA GURU]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="396" y="2" width="100" height="20" uuid="cb92bdf2-77f2-4e35-aefd-7bd84af4dca0"/>
+				<reportElement x="402" y="0" width="78" height="20" uuid="cb92bdf2-77f2-4e35-aefd-7bd84af4dca0"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[JENIS KELAMIN]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="18" y="0" width="53" height="20" uuid="c36f8c0b-ed0c-46f0-8ed0-607650446ab1"/>
+				<reportElement x="85" y="0" width="26" height="20" uuid="c36f8c0b-ed0c-46f0-8ed0-607650446ab1"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[NO]]></text>
 			</staticText>
+			<line>
+				<reportElement x="73" y="22" width="429" height="1" uuid="98b7adca-35cb-4b8d-bba3-9ba6ed67c8eb"/>
+			</line>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="39" splitType="Stretch">
+		<band height="26" splitType="Stretch">
 			<textField>
-				<reportElement x="98" y="19" width="100" height="20" uuid="3f3525e5-e223-4751-ae08-8a4bebbabcaa"/>
+				<reportElement x="149" y="6" width="100" height="20" uuid="3f3525e5-e223-4751-ae08-8a4bebbabcaa"/>
 				<textFieldExpression><![CDATA[$F{guru_nip}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="232" y="19" width="100" height="20" uuid="6b398c38-1c0b-4a40-8aba-43a087eb35b9"/>
+				<reportElement x="274" y="6" width="100" height="20" uuid="6b398c38-1c0b-4a40-8aba-43a087eb35b9"/>
 				<textFieldExpression><![CDATA[$F{guru_nama}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="396" y="19" width="100" height="20" uuid="2042c327-251b-4a07-b881-65918ca01209"/>
+				<reportElement x="402" y="6" width="78" height="20" uuid="2042c327-251b-4a07-b881-65918ca01209"/>
 				<textFieldExpression><![CDATA[$F{guru_jenis_kelamin}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="18" y="19" width="55" height="20" uuid="dd15a1b2-e0d9-46bb-9c47-970aa2216bf6"/>
+				<reportElement x="85" y="6" width="16" height="20" uuid="dd15a1b2-e0d9-46bb-9c47-970aa2216bf6"/>
 				<textFieldExpression><![CDATA[$V{COLUMN_COUNT}]]></textFieldExpression>
 			</textField>
+			<line>
+				<reportElement x="73" y="25" width="429" height="1" uuid="541fa22a-16cc-4ae4-bdea-cdea44fd2579"/>
+			</line>
+			<line>
+				<reportElement x="73" y="0" width="1" height="25" uuid="79cb0b2d-6c48-4004-aa9c-65d63578f7c5"/>
+			</line>
+			<line>
+				<reportElement x="127" y="1" width="1" height="25" uuid="f1de5f08-c57a-4372-bc4c-a0c93d92bf9c"/>
+			</line>
+			<line>
+				<reportElement x="249" y="1" width="1" height="25" uuid="8e7776bd-b122-4a18-a631-dc05a49e4c42"/>
+			</line>
+			<line>
+				<reportElement x="387" y="1" width="1" height="25" uuid="c1eaa05f-b8ef-4471-b338-d9cbae6c7998"/>
+			</line>
+			<line>
+				<reportElement x="501" y="0" width="1" height="25" uuid="e1bf6ba6-fc6d-4a6e-95bb-31acb0c093b7"/>
+			</line>
 		</band>
 	</detail>
 	<columnFooter>
