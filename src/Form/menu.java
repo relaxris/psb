@@ -36,6 +36,7 @@ private Connection conn = new koneksi().connect();
         jMenuItem1 = new javax.swing.JMenuItem();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         guru = new javax.swing.JMenuItem();
@@ -58,6 +59,8 @@ private Connection conn = new koneksi().connect();
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel2.setText("Madrasah Ibtidaiyah Tarbiyatul Aulad");
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/LOGO YAYASAN 2 resize.png"))); // NOI18N
 
         jMenu1.setText("Pendaftaran");
 
@@ -141,23 +144,29 @@ private Connection conn = new koneksi().connect();
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(123, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(118, 118, 118))
             .addGroup(layout.createSequentialGroup()
-                .addGap(114, 114, 114)
+                .addGap(145, 145, 145)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(39, 39, 39)
-                        .addComponent(jLabel1))
-                    .addComponent(jLabel2))
-                .addContainerGap(127, Short.MAX_VALUE))
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(117, 117, 117)
+                .addGap(30, 30, 30)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addComponent(jLabel2)
-                .addContainerGap(158, Short.MAX_VALUE))
+                .addGap(54, 54, 54))
         );
 
         pack();
@@ -262,6 +271,7 @@ private Connection conn = new koneksi().connect();
     private javax.swing.JMenuItem guru;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
