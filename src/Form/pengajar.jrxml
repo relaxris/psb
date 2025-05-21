@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8a47552e-0265-4f0f-92d1-f510204be821">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     guru.`nip` AS guru_nip,
+     guru.`nama` AS guru_nama,
+     guru.`jenis_kelamin` AS guru_jenis_kelamin,
+     guru.`password` AS guru_password,
+     mapel.`id_mapel` AS mapel_id_mapel,
+     mapel.`nama_mapel` AS mapel_nama_mapel,
+     mapel.`jenis_mapel` AS mapel_jenis_mapel,
+     pelajaran.`nip` AS pelajaran_nip,
+     pelajaran.`id_mapel` AS pelajaran_id_mapel,
+     pelajaran.`nama_mapel` AS pelajaran_nama_mapel,
+     pelajaran.`jenis_mapel` AS pelajaran_jenis_mapel
+FROM
+     `pelajaran` pelajaran INNER JOIN `guru` guru ON pelajaran.`nip` = guru.`nip`
+     INNER JOIN `mapel` mapel ON pelajaran.`id_mapel` = mapel.`id_mapel`
+     AND pelajaran.`jenis_mapel` = mapel.`jenis_mapel`
+     AND pelajaran.`nama_mapel` = mapel.`nama_mapel`]]>
+	</queryString>
+	<field name="guru_nip" class="java.lang.String"/>
+	<field name="guru_nama" class="java.lang.String"/>
+	<field name="guru_jenis_kelamin" class="java.lang.String"/>
+	<field name="guru_password" class="java.lang.String"/>
+	<field name="mapel_id_mapel" class="java.lang.String"/>
+	<field name="mapel_nama_mapel" class="java.lang.String"/>
+	<field name="mapel_jenis_mapel" class="java.lang.String"/>
+	<field name="pelajaran_nip" class="java.lang.String"/>
+	<field name="pelajaran_id_mapel" class="java.lang.String"/>
+	<field name="pelajaran_nama_mapel" class="java.lang.String"/>
+	<field name="pelajaran_jenis_mapel" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<textField>
+				<reportElement x="44" y="0" width="100" height="20" uuid="8b945099-c71e-42b9-a559-4bf2bba10019"/>
+				<textFieldExpression><![CDATA[$F{pelajaran_nip}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="185" y="2" width="100" height="20" uuid="fb9951de-bdaf-4aae-9ad1-c8de8b250b96"/>
+				<text><![CDATA[pelajaran_id_mapel]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="331" y="2" width="100" height="20" uuid="98eb68c4-c908-4b14-9f68-8ff5c00d87c5"/>
+				<text><![CDATA[pelajaran_nama_mapel]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="185" y="32" width="100" height="20" uuid="40d952f1-8055-46c0-a72d-03e00e48318a"/>
+				<textFieldExpression><![CDATA[$F{pelajaran_id_mapel}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="331" y="44" width="100" height="20" uuid="2e02d918-ddcc-478a-8f7f-869990f9e761"/>
+				<textFieldExpression><![CDATA[$F{pelajaran_nama_mapel}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -61,7 +61,7 @@ public class guru extends javax.swing.JFrame {
                     hasil.getString(4)
                 });
             }
-            daftarGuruTbl.setModel(tabmode);
+            tblguru.setModel(tabmode);
         } catch (Exception e){
             JOptionPane.showMessageDialog(null, "data gagal dipanggil"+e);
         }
@@ -84,7 +84,7 @@ public class guru extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         namaGuruTxt = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        daftarGuruTbl = new javax.swing.JTable();
+        tblguru = new javax.swing.JTable();
         ubahBtn = new javax.swing.JButton();
         simpanBtn = new javax.swing.JButton();
         hapusBtn = new javax.swing.JButton();
@@ -115,7 +115,7 @@ public class guru extends javax.swing.JFrame {
             }
         });
 
-        daftarGuruTbl.setModel(new javax.swing.table.DefaultTableModel(
+        tblguru.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -126,12 +126,12 @@ public class guru extends javax.swing.JFrame {
                 "Id", "Nama", "Jenis Kelamin", "Mata Pelajaran"
             }
         ));
-        daftarGuruTbl.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblguru.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                daftarGuruTblMouseClicked(evt);
+                tblguruMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(daftarGuruTbl);
+        jScrollPane1.setViewportView(tblguru);
 
         ubahBtn.setText("Ubah");
         ubahBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -349,8 +349,8 @@ public class guru extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_namaGuruTxtActionPerformed
 
-    private void daftarGuruTblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_daftarGuruTblMouseClicked
-        int bar = daftarGuruTbl.getSelectedRow();
+    private void tblguruMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblguruMouseClicked
+        int bar = tblguru.getSelectedRow();
         String a = tabmode.getValueAt(bar, 0).toString();
         String b = tabmode.getValueAt(bar, 1).toString();
         String c = tabmode.getValueAt(bar, 2).toString();
@@ -364,7 +364,7 @@ public class guru extends javax.swing.JFrame {
             rperempuan.setSelected(true);
             }
         password.setText(d);
-    }//GEN-LAST:event_daftarGuruTblMouseClicked
+    }//GEN-LAST:event_tblguruMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         dispose();
@@ -414,7 +414,6 @@ public class guru extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton cariBtn;
     private javax.swing.JTextField cariTxt;
-    private javax.swing.JTable daftarGuruTbl;
     private javax.swing.JButton hapusBtn;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -430,6 +429,7 @@ public class guru extends javax.swing.JFrame {
     private javax.swing.JRadioButton rlaki;
     private javax.swing.JRadioButton rperempuan;
     private javax.swing.JButton simpanBtn;
+    private javax.swing.JTable tblguru;
     private javax.swing.JButton ubahBtn;
     // End of variables declaration//GEN-END:variables
 }
