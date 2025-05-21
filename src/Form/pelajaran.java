@@ -17,6 +17,9 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 /**
  *
  * @author user
@@ -65,6 +68,18 @@ private DefaultTableModel tabmode;
     txtid.setText(idmapel);
     txtnm.setText(namamapel);
     txtjenismapel.setText(jenismapel);
+    }
+    
+    public void cetak (){
+        try {
+        String path = "./src/form/pengajar.jasper";  // letak penyimpanan ireport
+        HashMap parameter = new HashMap();
+        parameter.put("nip", txtnip.getText());
+        JasperPrint print = JasperFillManager.fillReport(path, parameter, conn);
+        JasperViewer.viewReport(print, false);
+        }catch (Exception ex) {
+        JOptionPane.showMessageDialog(rootPane, "Dokumen Tidak Ada " + ex);
+        }
     }
 
     /**
@@ -206,6 +221,9 @@ private DefaultTableModel tabmode;
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -221,8 +239,8 @@ private DefaultTableModel tabmode;
                                     .addComponent(txtnama)
                                     .addComponent(txtjenis, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(83, 83, 83)
-                                .addComponent(jLabel3)))
+                                .addGap(69, 69, 69)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(140, 140, 140)
@@ -245,11 +263,8 @@ private DefaultTableModel tabmode;
                                 .addContainerGap())
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel4)
-                                .addGap(43, 43, 43))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
-                        .addContainerGap())))
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(33, 33, 33))))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(253, 253, 253)
                 .addComponent(jLabel1)
@@ -369,6 +384,7 @@ try {
             stat2.executeUpdate();
         }
         JOptionPane.showMessageDialog(null, "data berhasil disimpan");
+        cetak();
     } catch (SQLException e) {
         JOptionPane.showMessageDialog(null, "data gagal disimpan" + e);
     }

@@ -45,10 +45,12 @@ private Connection conn = new koneksi().connect();
         daftar = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         nota = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -98,15 +100,23 @@ private Connection conn = new koneksi().connect();
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Nota");
+        jMenu2.setText("Penerimaan");
 
-        nota.setText("Penerimaan");
+        nota.setText("Nota");
         nota.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 notaActionPerformed(evt);
             }
         });
         jMenu2.add(nota);
+
+        jMenuItem5.setText("Pelajaran");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem5);
 
         jMenuBar1.add(jMenu2);
 
@@ -135,6 +145,14 @@ private Connection conn = new koneksi().connect();
             }
         });
         jMenu3.add(jMenuItem4);
+
+        jMenuItem6.setText("Laporan Data Pengajar");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem6);
 
         jMenuBar1.add(jMenu3);
 
@@ -230,6 +248,22 @@ private Connection conn = new koneksi().connect();
     }
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        pelajaran fp = new pelajaran ();
+        fp.setVisible(true);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+                try {
+        String path = "./src/form/mapel.jasper"; // letak penyimpanan report
+        HashMap parameter = new HashMap();
+        JasperPrint print = JasperFillManager.fillReport(path, parameter, conn);
+        JasperViewer.viewReport(print, false);
+    } catch (Exception ex) {
+        JOptionPane.showMessageDialog(rootPane, "Dokumen Tidak Ada " + ex);
+    }
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -280,6 +314,8 @@ private Connection conn = new koneksi().connect();
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem mapel;
     private javax.swing.JMenuItem nota;
     // End of variables declaration//GEN-END:variables

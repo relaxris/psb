@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f720c66c-089b-4546-bd53-5a298162e755">
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     guru.`nip` AS guru_nip,
+     guru.`nama` AS guru_nama,
+     guru.`jenis_kelamin` AS guru_jenis_kelamin,
+     guru.`password` AS guru_password,
+     mapel.`id_mapel` AS mapel_id_mapel,
+     mapel.`nama_mapel` AS mapel_nama_mapel,
+     mapel.`jenis_mapel` AS mapel_jenis_mapel,
+     pelajaran.`nip` AS pelajaran_nip,
+     pelajaran.`id_mapel` AS pelajaran_id_mapel,
+     pelajaran.`nama_mapel` AS pelajaran_nama_mapel,
+     pelajaran.`jenis_mapel` AS pelajaran_jenis_mapel
+FROM
+     `pelajaran` pelajaran INNER JOIN `guru` guru ON pelajaran.`nip` = guru.`nip`
+     INNER JOIN `mapel` mapel ON pelajaran.`id_mapel` = mapel.`id_mapel`
+     AND pelajaran.`jenis_mapel` = mapel.`jenis_mapel`
+     AND pelajaran.`nama_mapel` = mapel.`nama_mapel`]]>
+	</queryString>
+	<field name="guru_nip" class="java.lang.String"/>
+	<field name="guru_nama" class="java.lang.String"/>
+	<field name="guru_jenis_kelamin" class="java.lang.String"/>
+	<field name="guru_password" class="java.lang.String"/>
+	<field name="mapel_id_mapel" class="java.lang.String"/>
+	<field name="mapel_nama_mapel" class="java.lang.String"/>
+	<field name="mapel_jenis_mapel" class="java.lang.String"/>
+	<field name="pelajaran_nip" class="java.lang.String"/>
+	<field name="pelajaran_id_mapel" class="java.lang.String"/>
+	<field name="pelajaran_nama_mapel" class="java.lang.String"/>
+	<field name="pelajaran_jenis_mapel" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
