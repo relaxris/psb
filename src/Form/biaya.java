@@ -273,7 +273,7 @@ private DefaultTableModel tabmode;
 
     private void bubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bubahActionPerformed
             try{
-            String sql = "Update biaya set jenis=?, nominal=? where kd_biaya='"+txtkd.getText()+"'";
+            String sql = "Update biaya set rincian=?, nominal=? where kd_biaya='"+txtkd.getText()+"'";
             PreparedStatement stat = conn.prepareStatement(sql);
             stat.setString(1, cbjenis.getSelectedItem().toString());
             stat.setString(2, txtnominal.getText());

@@ -280,7 +280,7 @@ private DefaultTableModel tabmode;
     private void bubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bubahActionPerformed
         // TODO add your handling code here:
         try{
-            String sql = "Update mapel set nama_mapel=?,jenis=? where id_mapel='"+txtid.getText()+"'";
+            String sql = "Update mapel set nama_mapel=?,jenis_mapel=? where id_mapel='"+txtid.getText()+"'";
             PreparedStatement stat = conn.prepareStatement(sql);
             stat.setString(1, txtnm.getText());
             stat.setString(2, cbjenis.getSelectedItem().toString());
