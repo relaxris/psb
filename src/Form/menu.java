@@ -255,7 +255,7 @@ private Connection conn = new koneksi().connect();
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
                 try {
-        String path = "./src/form/mapel.jasper"; // letak penyimpanan report
+        String path = "./src/form/pengajar.jasper"; // letak penyimpanan report
         HashMap parameter = new HashMap();
         JasperPrint print = JasperFillManager.fillReport(path, parameter, conn);
         JasperViewer.viewReport(print, false);

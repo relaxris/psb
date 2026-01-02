@@ -41,11 +41,11 @@ FROM
 		<band height="105" splitType="Stretch">
 			<image>
 				<reportElement x="455" y="0" width="100" height="100" uuid="1c06c663-2da6-4667-9f19-9e966f4708d4"/>
-				<imageExpression><![CDATA["C:\\Users\\user\\Downloads\\yayasan.png"]]></imageExpression>
+				<imageExpression><![CDATA[getClass().getResource("./images/yayasan.png")]]></imageExpression>
 			</image>
 			<image>
 				<reportElement x="0" y="0" width="101" height="100" uuid="42f0841e-5684-4b36-9270-f69775aa8872"/>
-				<imageExpression><![CDATA["C:\\Users\\user\\Downloads\\logo.png"]]></imageExpression>
+				<imageExpression><![CDATA[getClass().getResource("./images/logo.png")]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="154" y="65" width="263" height="35" uuid="97ebd9c8-2a35-4990-99c3-172fe270c6d7"/>

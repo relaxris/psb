@@ -21,12 +21,12 @@ public class koneksi {
             System.out.println("berhasil konek");
         }
         catch(ClassNotFoundException ex){
-            System.out.println("gagal koneksi"+ex);
+            System.out.println("gagal konek: " + ex);
         }
         String url = "jdbc:mysql://localhost/psb";
         try{
             koneksi = DriverManager.getConnection(url,"root","");
-            System.out.println("berhasil koneksi database");
+            System.out.println("berhasil koneksi database " + url);
         }
         catch (SQLException ex) {
             System.out.println("gagal koneksi database"+ex);

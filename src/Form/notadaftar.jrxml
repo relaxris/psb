@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2015ba24-8bad-4d4e-bc6b-4a7361c36f10">
-	<property name="ireport.zoom" value="3.797498335832421"/>
-	<property name="ireport.x" value="863"/>
-	<property name="ireport.y" value="475"/>
+	<property name="ireport.zoom" value="1.1000000000000025"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="id_nota" class="java.lang.String"/>
 	<queryString language="SQL">
 		<![CDATA[SELECT
@@ -88,11 +88,11 @@ FROM
 			</staticText>
 			<image>
 				<reportElement x="455" y="0" width="100" height="100" uuid="f878ebb8-289e-4008-a667-f2043eae163f"/>
-				<imageExpression><![CDATA["C:\\Users\\user\\Downloads\\yayasan.png"]]></imageExpression>
+				<imageExpression><![CDATA[getClass().getResource("./images/yayasan.png")]]></imageExpression>
 			</image>
 			<image>
 				<reportElement x="0" y="3" width="101" height="100" uuid="ebedac5b-fc04-435b-a3c8-314b390f514f"/>
-				<imageExpression><![CDATA["C:\\Users\\user\\Downloads\\logo.png"]]></imageExpression>
+				<imageExpression><![CDATA[getClass().getResource("./images/logo.png")]]></imageExpression>
 			</image>
 		</band>
 	</title>
