@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8a47552e-0265-4f0f-92d1-f510204be821">
-	<property name="ireport.zoom" value="1.210000000000001"/>
+	<property name="ireport.zoom" value="1.2100000000000024"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="nip" class="java.lang.String"/>
@@ -38,97 +38,112 @@ FROM
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="105" splitType="Stretch">
+		<band height="113" splitType="Stretch">
 			<image>
-				<reportElement x="455" y="0" width="100" height="100" uuid="1c06c663-2da6-4667-9f19-9e966f4708d4"/>
+				<reportElement x="5" y="8" width="100" height="100" uuid="1c06c663-2da6-4667-9f19-9e966f4708d4"/>
 				<imageExpression><![CDATA[getClass().getResource("./images/yayasan.png")]]></imageExpression>
 			</image>
-			<image>
-				<reportElement x="0" y="0" width="101" height="100" uuid="42f0841e-5684-4b36-9270-f69775aa8872"/>
-				<imageExpression><![CDATA[getClass().getResource("./images/logo.png")]]></imageExpression>
-			</image>
 			<staticText>
-				<reportElement x="154" y="65" width="263" height="35" uuid="97ebd9c8-2a35-4990-99c3-172fe270c6d7"/>
-				<textElement>
-					<font size="24" isBold="true"/>
+				<reportElement x="111" y="10" width="354" height="54" uuid="fedfd3c1-119f-4e9d-ac84-41b9e0ac4e70"/>
+				<textElement textAlignment="Center">
+					<font size="20" isBold="true"/>
 				</textElement>
-				<text><![CDATA[LAPORAN PENGAJAR]]></text>
+				<text><![CDATA[MADRASAH IBTIDAIYAH TARBIYATUL AULAD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="111" y="60" width="354" height="35" uuid="06d51041-c7c1-475e-8d1f-78b8771ec746"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Jl. KSR Dadi Kusmayadi No. 04 Kel. Sukahati Kec. Cibinong
+Kab.Bogor  Kode Pos 16913 Hp.089679406044
+]]></text>
 			</staticText>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="140" splitType="Stretch">
+		<band height="164" splitType="Stretch">
 			<textField>
-				<reportElement x="164" y="17" width="113" height="20" uuid="8b945099-c71e-42b9-a559-4bf2bba10019"/>
+				<reportElement x="164" y="67" width="113" height="20" uuid="8b945099-c71e-42b9-a559-4bf2bba10019"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{pelajaran_nip}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="164" y="51" width="113" height="20" uuid="7427c255-c4e5-4305-9bb1-f843923ff492"/>
+				<reportElement x="164" y="101" width="113" height="20" uuid="7427c255-c4e5-4305-9bb1-f843923ff492"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{guru_nama}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="164" y="89" width="153" height="20" uuid="bde7358d-b96c-4a2f-8431-bafa067c04f1"/>
+				<reportElement x="164" y="139" width="153" height="20" uuid="bde7358d-b96c-4a2f-8431-bafa067c04f1"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{guru_jenis_kelamin}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="20" y="17" width="134" height="20" uuid="34269c43-624f-42b9-be8b-c76b7d5f08b4"/>
+				<reportElement x="20" y="67" width="134" height="20" uuid="34269c43-624f-42b9-be8b-c76b7d5f08b4"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<text><![CDATA[NIP			:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="20" y="51" width="134" height="20" uuid="978e52dd-9dab-430b-81df-28ee902960df"/>
+				<reportElement x="20" y="101" width="134" height="20" uuid="978e52dd-9dab-430b-81df-28ee902960df"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<text><![CDATA[Nama			:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="20" y="89" width="134" height="20" uuid="e10acc22-160d-419a-afaf-922dc1cad1c6"/>
+				<reportElement x="20" y="139" width="134" height="20" uuid="e10acc22-160d-419a-afaf-922dc1cad1c6"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<text><![CDATA[Jenis Kelamin	:]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="174" y="6" width="226" height="35" uuid="97ebd9c8-2a35-4990-99c3-172fe270c6d7"/>
+				<textElement textAlignment="Center">
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LAPORAN PENGAJAR]]></text>
+			</staticText>
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="24" splitType="Stretch">
+		<band height="44" splitType="Stretch">
 			<staticText>
-				<reportElement x="64" y="0" width="121" height="20" uuid="fb9951de-bdaf-4aae-9ad1-c8de8b250b96"/>
+				<reportElement x="64" y="20" width="121" height="20" uuid="fb9951de-bdaf-4aae-9ad1-c8de8b250b96"/>
 				<textElement>
 					<font size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[ID Mata Pelajaran]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="207" y="0" width="142" height="20" uuid="98eb68c4-c908-4b14-9f68-8ff5c00d87c5"/>
+				<reportElement x="207" y="20" width="142" height="20" uuid="98eb68c4-c908-4b14-9f68-8ff5c00d87c5"/>
 				<textElement>
 					<font size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Nama Mata Pelajaran]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="369" y="0" width="140" height="20" uuid="0fd197f0-07b9-4418-a7eb-119b9639e335"/>
+				<reportElement x="369" y="20" width="140" height="20" uuid="0fd197f0-07b9-4418-a7eb-119b9639e335"/>
 				<textElement>
 					<font size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Jenis Mata Pelajaran]]></text>
 			</staticText>
+			<line>
+				<reportElement x="0" y="11" width="555" height="1" uuid="c35caac6-cd00-4de4-9db0-3c5982fbac88"/>
+			</line>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="39" splitType="Stretch">
+		<band height="58" splitType="Stretch">
 			<textField>
 				<reportElement x="64" y="19" width="121" height="20" uuid="40d952f1-8055-46c0-a72d-03e00e48318a"/>
 				<textFieldExpression><![CDATA[$F{pelajaran_id_mapel}]]></textFieldExpression>
@@ -141,10 +156,43 @@ FROM
 				<reportElement x="369" y="19" width="140" height="20" uuid="b59a1abf-47a7-47c6-bdcf-1e7714fc814f"/>
 				<textFieldExpression><![CDATA[$F{pelajaran_jenis_mapel}]]></textFieldExpression>
 			</textField>
+			<line>
+				<reportElement x="0" y="0" width="555" height="1" uuid="2c57bc86-273e-4e54-9226-04d6380ed925"/>
+			</line>
+			<line>
+				<reportElement x="0" y="47" width="555" height="1" uuid="ded799fd-cc64-4744-8683-9c8a69d02039"/>
+			</line>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="45" splitType="Stretch"/>
+		<band height="166" splitType="Stretch">
+			<staticText>
+				<reportElement x="247" y="10" width="302" height="20" uuid="fc421f13-c84e-4eb0-a1b7-cf32d02bbd02"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[MENGETAHUI
+]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="327" y="30" width="182" height="23" uuid="3c529e9d-b998-4197-9beb-032b67588030"/>
+				<textFieldExpression><![CDATA["Jakarta, " + new java.text.SimpleDateFormat(
+    "EEEE dd MMMM yyyy",
+    new java.util.Locale("id", "ID")
+).format(new java.util.Date())]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="247" y="53" width="302" height="113" uuid="79b7c225-7443-4b5a-91c8-4ba85b0b7388"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[
+
+
+Anggi Sofi Aghna Pusfitasari
+Admin]]></text>
+			</staticText>
+		</band>
 	</columnFooter>
 	<pageFooter>
 		<band height="54" splitType="Stretch"/>

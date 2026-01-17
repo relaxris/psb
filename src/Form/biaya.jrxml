@@ -18,15 +18,27 @@ FROM
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="101" splitType="Stretch">
+		<band height="114" splitType="Stretch">
 			<image>
-				<reportElement x="455" y="0" width="100" height="100" uuid="e2d295b9-9850-426a-b926-4c0ad8728ebe"/>
+				<reportElement x="0" y="10" width="100" height="100" uuid="e2d295b9-9850-426a-b926-4c0ad8728ebe"/>
 				<imageExpression><![CDATA[getClass().getResource("./images/yayasan.png")]]></imageExpression>
 			</image>
-			<image>
-				<reportElement x="0" y="0" width="95" height="100" uuid="10b5a368-ec8a-4ae7-99bc-56e7197a9654"/>
-				<imageExpression><![CDATA[getClass().getResource("./images/logo.png")]]></imageExpression>
-			</image>
+			<staticText>
+				<reportElement x="108" y="10" width="354" height="54" uuid="f2bb0daf-cbb7-4f5f-8602-737b7afb738d"/>
+				<textElement textAlignment="Center">
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MADRASAH IBTIDAIYAH TARBIYATUL AULAD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="108" y="60" width="354" height="35" uuid="a258956f-6e68-4110-b571-f24db32f2bc0"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Jl. KSR Dadi Kusmayadi No. 04 Kel. Sukahati Kec. Cibinong
+Kab.Bogor  Kode Pos 16913 Hp.089679406044
+]]></text>
+			</staticText>
 		</band>
 	</title>
 	<pageHeader>
@@ -34,7 +46,7 @@ FROM
 			<staticText>
 				<reportElement x="134" y="0" width="282" height="31" uuid="2a4dd3e3-65df-4081-87ec-d3c42054fb9c"/>
 				<textElement>
-					<font size="24" isBold="true"/>
+					<font size="20" isBold="true"/>
 				</textElement>
 				<text><![CDATA[LAPORAN DATA BIAYA]]></text>
 			</staticText>
@@ -114,10 +126,37 @@ FROM
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="45" splitType="Stretch"/>
+		<band height="194" splitType="Stretch">
+			<staticText>
+				<reportElement x="250" y="63" width="302" height="113" uuid="b72ef13b-dc73-4aa7-bad0-4fd6b97be870"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[
+
+
+Anggi Sofi Aghna Pusfitasari
+Admin]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="250" y="20" width="302" height="20" uuid="9fab53f7-d2dc-43fc-a2b5-105717efc7e9"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[MENGETAHUI
+]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="330" y="40" width="182" height="23" uuid="2e5adc08-a9aa-42a3-bd45-36b8bb183a54"/>
+				<textFieldExpression><![CDATA["Jakarta, " + new java.text.SimpleDateFormat(
+    "EEEE dd MMMM yyyy",
+    new java.util.Locale("id", "ID")
+).format(new java.util.Date())]]></textFieldExpression>
+			</textField>
+		</band>
 	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch"/>
+		<band height="36" splitType="Stretch"/>
 	</pageFooter>
 	<summary>
 		<band height="42" splitType="Stretch"/>
